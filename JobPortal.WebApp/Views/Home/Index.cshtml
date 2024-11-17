@@ -15,11 +15,11 @@
         <div class="row search-page-top d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
                 <h1 class="text-white">
-                    <span>@jobCount+</span> Jobs posted week ago
+                    <span>@jobCount+</span> offres d'emploi publiées il y a une semaine
                 </h1>
                 <!--Search box-->
                 @Html.Partial("../Shared/_SearchBoxPartial.cshtml")
-                <p style="font-size: 20px" class="text-white"> <span>Search by tags:</span> Developer, Engineer, Technology, Support, Manager, Senior, Junior</p>
+                <p style="font-size: 20px" class="text-white"> <span>Recherche par tags :</span> Developer, Engineer, Technology, Support, Manager, Senior, Junior</p>
             </div>
         </div>
     </div>
@@ -28,12 +28,12 @@
 
 <!-- Category -->
 <!-- Start features Area -->
-<section class="features-area">
+@* <section class="features-area">
     <div class="container">
         <!-- Category view component-->
         <vc:category></vc:category>
     </div>
-</section>
+</section> *@
 
 <!-- Job model -->
 <!-- Start popular-post Area -->
@@ -90,10 +90,10 @@
             <div class="menu-content pb-60 col-lg-10">
                 <div class="title text-center">
                     <h1 class="mb-10">Featured Skill Categories</h1>
-                    <p>Who are in extremely love with eco friendly system.</p>
+                    <p>Meilleures compétences demandées.</p>
                 </div>
             </div>
-        </div>
+        </div><
         <div class="row">
             @foreach (var skill in ViewBag.RandomSkills)
             {
@@ -149,14 +149,13 @@
     </div>
 </section>
 <br /><br /><br />
-<!-- Start callto-action Area -->
+@* <!-- Start callto-action Area -->
 <section class="callto-action-area section-gap" id="join">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="menu-content col-lg-9">
                 <div class="title text-center">
-                    <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                    <h1 class="mb-10 text-white">Rejoignez-nous aujourd'hui sans aucune hésitation</h1>
                     <a class="primary-btn" href="#">I am a Candidate</a>
                     <a class="primary-btn" href="#">Request Free Demo</a>
                 </div>
@@ -165,8 +164,8 @@
     </div>
 </section>
 <!-- End calto-action Area -->
-
-<!-- Start download Area -->
+ *@
+@* <!-- Start download Area -->
 <section class="download-area section-gap" id="app">
     <div class="container">
         <div class="row">
@@ -210,7 +209,7 @@
     </div>
 </section>
 <!-- End download Area -->
-
+ *@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 
