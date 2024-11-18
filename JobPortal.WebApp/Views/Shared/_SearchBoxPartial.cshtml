@@ -2,15 +2,15 @@
     <div class="row justify-content-center form-wrap">
         <div class="col-lg-4 form-cols">
             <label for="inputPassword2" class="sr-only">Password</label>
-            <input type="text" class="form-control" id="inputPassword2" placeholder="What are you looking for?" name="q" value="@if (ViewBag.q != null) 
-            {<text>@ViewBag.q</text>}">
+            <input type="text" class="form-control" id="inputPassword2" placeholder="Qu'est-ce que tu cherches?" name="q" value="@if (ViewBag.q != null)
+                   {<text>@ViewBag.q</text>}">
             <input type="hidden" name="catelog" value="@if (ViewBag.Category != null) 
             {<text>@ViewBag.Category.Slug</text>}">
         </div>
         <div class="col-lg-3 form-cols">
             <div class="default-select" id="default-selects">
                 <select name="province">
-                    <option>Select area</option>
+                    <option>Région</option>
                     @if (ViewBag.FilterProvinces != null)
                     {
                         foreach (var province in ViewBag.FilterProvinces)
@@ -24,7 +24,7 @@
         <div class="col-lg-3 form-cols">
             <div class="default-select" id="default-selects2">
                 <select name="skill">
-                    <option>Select skill</option>
+                    <option>Compétance</option>
                     @if (ViewBag.FilterSkills != null)
                     {
                         @foreach (var skill in ViewBag.FilterSkills)

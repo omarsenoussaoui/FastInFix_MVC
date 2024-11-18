@@ -157,7 +157,7 @@
 		@if (@account.Status == null)
 		{
 			<div class="buy-now">
-				<button href="#" data-toggle="modal" data-target="#viewRegister" class="btn btn-danger btn-buy-now">Register to Employer</button>
+				<button href="#" data-toggle="modal" data-target="#viewRegister" class="btn btn-danger btn-buy-now">S'inscrire comme employeur</button>
 			</div>
 
 			<!-- Modal -->
@@ -166,9 +166,9 @@
 					<div class="modal-content">
 						<div class="modal-header bg-primary">
 							<h5 style="color: white" class="modal-title" id="exampleModalLabel">
-								Become an employer to recruit great IT talents with Job Portal
+								Devenez employeur pour recruter des talents exceptionnels avec Job Portal
 							</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
@@ -176,27 +176,28 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<img style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto 20px;" src="https://localhost:7211/images/default/ads.jpg" alt="ads image">
-										<p>By registering as an employer, you gain access to numerous benefits:</p>
+										<img style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto 20px;" src="https://localhost:7211/images/default/ads.jpg" alt="image publicité">
+										<p>En vous inscrivant en tant qu'employeur, vous bénéficiez de nombreux avantages :</p>
 										<ul class="unordered-list">
-											<li>Ability to post job listings and reach a wider audience</li>
-											<li>Direct communication with potential candidates</li>
-											<li>Access to advanced search filters and candidate matching</li>
-											<li>Manage and track applications efficiently</li>
-											<li>Build your company's brand and reputation</li>
+											<li>Possibilité de publier des offres d'emploi et d'atteindre un public plus large</li>
+											<li>Communication directe avec des candidats potentiels</li>
+											<li>Accès à des filtres de recherche avancés et au matching de candidats</li>
+											<li>Gestion et suivi efficace des candidatures</li>
+											<li>Amélioration de l'image de marque et de la réputation de votre entreprise</li>
 										</ul>
-										<p style="text-align: center">Don't miss out on these advantages. Register now!</p>
+										<p style="text-align: center">Ne manquez pas ces avantages. Inscrivez-vous dès maintenant !</p>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<a href="/register-employer/register/@account.Id" class="btn btn-primary">Register now</a>
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<a href="/register-employer/register/@account.Id" class="btn btn-primary">S'inscrire maintenant</a>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 						</div>
 					</div>
 				</div>
 			</div>
+
 		}
 	}
 

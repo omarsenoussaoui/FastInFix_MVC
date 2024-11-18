@@ -21,87 +21,86 @@
     </div>
 </section>
 <!-- End banner Area -->
-<!-- Start contact-page Area -->
 <section class="contact-page-area section-gap">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 style="text-align: center" class="card-title">Application for approval to become an employer</h4>
+                        <h4 style="text-align: center" class="card-title">Demande d'approbation pour devenir employeur</h4>
                         <br />
                         <div class="col-md-4i">
                             <form asp-action="Register" enctype="multipart/form-data" id="form">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label asp-for="Email" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="Email" class="control-label">Adresse email</label><span class="text-danger">*</span>
                                             <input asp-for="Email" class="form-control" />
                                             <span asp-validation-for="Email" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="Description" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="Description" class="control-label">Description</label><span class="text-danger">*</span>
                                             <textarea asp-for="Description" class="form-control ckeditor"></textarea>
                                             <span asp-validation-for="Description" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="Content" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="Content" class="control-label">Contenu</label><span class="text-danger">*</span>
                                             <textarea asp-for="Content" class="form-control ckeditor"></textarea>
                                             <span asp-validation-for="Content" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="Contact" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="Contact" class="control-label">Contact</label><span class="text-danger">*</span>
                                             <textarea asp-for="Contact" class="form-control ckeditor"></textarea>
                                             <span asp-validation-for="Contact" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label asp-for="FullName" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="FullName" class="control-label">Nom complet</label><span class="text-danger">*</span>
                                             <input asp-for="FullName" class="form-control" />
                                             <span asp-validation-for="FullName" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="UrlAvatar" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="UrlAvatar" class="control-label">Logo de l'entreprise</label><span class="text-danger">*</span>
                                             <input type="file" asp-for="UrlAvatar" class="form-control" accept="image/*" id="imgInp" />
                                             <span asp-validation-for="UrlAvatar" class="text-danger"></span>
-                                            <img id="blah" src="#" alt="your logo" style="width: 335px;" />
+                                            <img id="blah" src="#" alt="votre logo" style="width: 335px;" />
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="CompanySize" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="CompanySize" class="control-label">Taille de l'entreprise</label><span class="text-danger">*</span>
                                             <input asp-for="CompanySize" class="form-control" />
                                             <span asp-validation-for="CompanySize" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="WorkingDays" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="WorkingDays" class="control-label">Jours de travail</label><span class="text-danger">*</span>
                                             <input asp-for="WorkingDays" class="form-control" />
                                             <span asp-validation-for="WorkingDays" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="Phone" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="Phone" class="control-label">Numéro de téléphone</label><span class="text-danger">*</span>
                                             <input asp-for="Phone" class="form-control" />
                                             <span asp-validation-for="Phone" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="Location" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="Location" class="control-label">Lieu</label><span class="text-danger">*</span>
                                             <input asp-for="Location" class="form-control" />
                                             <span asp-validation-for="Location" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="WebsiteURL" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="WebsiteURL" class="control-label">Site web</label><span class="text-danger">*</span>
                                             <input asp-for="WebsiteURL" class="form-control" />
                                             <span asp-validation-for="WebsiteURL" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="ProvinceId" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="ProvinceId" class="control-label">Province</label><span class="text-danger">*</span>
                                             <select asp-for="ProvinceId" class="form-control" asp-items="ViewBag.ProvinceId"></select>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="CountryId" class="control-label"></label><span class="text-danger">*</span>
+                                            <label asp-for="CountryId" class="control-label">Pays</label><span class="text-danger">*</span>
                                             <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId"></select>
                                         </div>
                                         <div class="form-group text-center" style="margin-bottom: 15px">
-                                            <input style="background-color:forestgreen" type="button" onclick="onRegister()" value="Register" class="btn btn-primary" />
+                                            <input style="background-color:forestgreen" type="button" onclick="onRegister()" value="S'inscrire" class="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>

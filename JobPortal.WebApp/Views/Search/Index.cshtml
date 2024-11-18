@@ -11,16 +11,16 @@
         <div class="row search-page-top d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
                 <h1 class="text-white">
-                    Search Results
+                    Résultats de la recherche
                 </h1>
                 <p class="text-white link-nav">
-                    <a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="#"> Job searching page</a>
+                    <a href="/">Accueil </a> <span class="lnr lnr-arrow-right"></span> <a href="#"> Recherche d'offre</a>
                 </p>
                 <!--Search box-->
                 @Html.Partial("../Shared/_SearchBoxPartial.cshtml")
                 @if (ViewBag.q == null && ViewBag.province == null && ViewBag.skill == null)
                 {
-                    <p style="font-size: 25px" class="text-white"><span>@Model.Count()+</span> IT Jobs For <span> Developers</span></p>
+                    <p style="font-size: 25px" class="text-white"><span>@Model.Count()+</span> Offre <span>  pour les Ingénieurs et Techniciens </span></p>
                 }
                 else
                 {
@@ -86,7 +86,7 @@
                                     <div class="titles">
                                         <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
                                         <h5 style="color: gray"><span class="lnr lnr-hourglass"></span> @GetTimeAgo(job.CreateDate)</h5>
-                                        <h5><strong>From: <a href="/company/@job.AppUser.Slug">@job.AppUser.FullName</a></strong></h5>
+                                        <h5><strong>Entreprise: <a href="/company/@job.AppUser.Slug">@job.AppUser.FullName</a></strong></h5>
                                     </div>
                                 </div>
                                 <hr>
@@ -94,13 +94,13 @@
                                 <hr />
                                 <div style="display:flex; justify-content: space-between;">
                                     <div>
-                                        <h5><strong>Job Nature: @job.Time.Name</strong></h5>
+                                        <h5><strong>Nature: @job.Time.Name</strong></h5>
                                         <h5 style="color: blue"><span class="lnr lnr-book"></span> <strong>@job.Title.Name</strong></h5>
-                                        <h5 style="color: green"><strong>$ @job.MinSalary - @job.MaxSalary USD</strong></h5>
+                                        <h5 style="color: green"><strong> @job.MinSalary - @job.MaxSalary </strong></h5>
                                     </div>
                                     <div style="text-align:right; margin-top: 40px">
                                         <ul class="btns">
-                                            <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
+                                            <li style="border-radius:10px"><a href="/job/@job.Slug">Postulez maintenant !</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
 </section>
 <!-- End post Area -->
 <!-- Start callto-action Area -->
-<section class="callto-action-area section-gap">
+@* <section class="callto-action-area section-gap">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="menu-content col-lg-9">
@@ -138,7 +138,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> *@
 <!-- End calto-action Area -->
 
 @functions {
@@ -149,15 +149,19 @@
 
         if (timeAgo.TotalMinutes < 60)
         {
-            return $"Posted {Math.Max(1, (int)timeAgo.TotalMinutes)} minute{(timeAgo.TotalMinutes >= 2 ? "s" : "")} ago";
+            return $"Publié il y a  {Math.Max(1, (int)timeAgo.TotalMinutes)} minute{(timeAgo.TotalMinutes >= 2 ? "s" : "")} jours";
         }
         else if (timeAgo.TotalHours < 24)
         {
-            return $"Posted {Math.Max(1, (int)timeAgo.TotalHours)} hour{(timeAgo.TotalHours >= 2 ? "s" : "")} ago";
+
+            return $"Publié il y a  {Math.Max(1, (int)timeAgo.TotalHours)} hour{(timeAgo.TotalHours >= 2 ? "s" : "")} jours";
+
         }
         else
         {
-            return $"Posted {Math.Max(1, (int)timeAgo.TotalDays)} day{(timeAgo.TotalDays >= 2 ? "s" : "")} ago";
+
+            return $"Publié il y a  {Math.Max(1, (int)timeAgo.TotalDays)} day{(timeAgo.TotalDays >= 2 ? "s" : "")} jours";
+
         }
     }
 }

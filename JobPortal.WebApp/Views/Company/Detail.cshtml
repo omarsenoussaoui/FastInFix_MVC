@@ -18,7 +18,7 @@
 				<h1 class="text-white">
 					@Model.FullName
 				</h1>
-				<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Company overview</a></p>
+				<p class="text-white link-nav"><a href="/">Accueil </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Entreprise</a></p>
 			</div>
 		</div>
 	</div>
@@ -36,12 +36,12 @@
                     <ul class="cat-list">
                         @if (ViewBag.CountJob == 1)
                         {
-                            <li class="col-xs-12 col-4"><a href="/job?slug=@Model.Slug">@ViewBag.CountJob job opening</a></li>
+                            <li class="col-xs-12 col-4"><a href="/job?slug=@Model.Slug">@ViewBag.CountJob offres opening</a></li>
 
                         }
                         else if (ViewBag.CountJob > 1)
                         {
-                            <li class="col-xs-12 col-4"><a href="/job?slug=@Model.Slug">@ViewBag.CountJob jobs opening</a></li>
+                            <li class="col-xs-12 col-4"><a href="/job?slug=@Model.Slug">@ViewBag.CountJob offres ouverts</a></li>
                         }
                     </ul>
                     <ul class="tags">

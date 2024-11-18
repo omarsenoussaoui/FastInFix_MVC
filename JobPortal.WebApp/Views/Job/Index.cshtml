@@ -49,10 +49,10 @@
                     else
                     {
                         <text>
-                            @((ViewBag.Time != null ? $"{ViewBag.Time.Name} jobs" : null) ??
-                                (ViewBag.Province != null ? $"Jobs in {ViewBag.Province.Name}" :
-                                (ViewBag.Skill != null ? $"Jobs for {ViewBag.Skill.Name}" :
-                                (ViewBag.Employer != null ? $"{ViewBag.Employer.FullName} Jobs" : null))))
+                            @((ViewBag.Time != null ? $"{ViewBag.Time.Name} offres" : null) ??
+                                (ViewBag.Province != null ? $"offres en {ViewBag.Province.Name}" :
+                                (ViewBag.Skill != null ? $"offres pour {ViewBag.Skill.Name}" :
+                                (ViewBag.Employer != null ? $"{ViewBag.Employer.FullName} offres" : null))))
                         </text>
                     }
                 </h1>
@@ -117,7 +117,7 @@
                                     </div>
                                     <div style="text-align:right; margin-top: 40px">
                                         <ul class="btns">
-                                            <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
+                                            <li style="border-radius:10px"><a href="/job/@job.Slug">Postulez maintenant !</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -183,7 +183,7 @@
 </section>
 <!-- End post Area -->
 <!-- Start callto-action Area -->
-<section class="callto-action-area section-gap">
+@* <section class="callto-action-area section-gap">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="menu-content col-lg-9">
@@ -196,7 +196,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> *@
 <!-- End calto-action Area -->
 
 @functions {
