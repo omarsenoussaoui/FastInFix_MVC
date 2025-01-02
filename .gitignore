@@ -124,3 +124,12 @@ blazor.webassembly.js
 blazorwasm.zip
 publish/
 wwwroot/dist/
+/JobPortal.Common/obj/JobPortal.Common.csproj.nuget.dgspec.json
+/JobPortal.Common/obj/JobPortal.Common.csproj.nuget.g.props
+/JobPortal.Common/obj/project.assets.json
+/JobPortal.Data/obj/JobPortal.Data.csproj.nuget.dgspec.json
+/JobPortal.Data/obj/JobPortal.Data.csproj.nuget.g.props
+/JobPortal.Data/obj/project.assets.json
+/JobPortal.WebApp/obj/JobPortal.WebApp.csproj.nuget.dgspec.json
+/JobPortal.WebApp/obj/JobPortal.WebApp.csproj.nuget.g.props
+/JobPortal.WebApp/obj/project.assets.json
