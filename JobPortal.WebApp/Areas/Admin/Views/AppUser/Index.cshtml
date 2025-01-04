@@ -2,7 +2,9 @@
 
 @{
     ViewData["Title"] = "User manager";
+    var baseUrl = ViewBag.BaseUrl;
 }
+
 
 <div class="content-wrapper">
     <div class="row">
@@ -32,7 +34,7 @@
                                 {
                                     <tr>
                                         <td>@user["Email"]</td>
-                                        <td><img src="https://localhost:7211/images/employers/@user["Avatar"]" style="width: 50px" /></td>
+                                        <td><img src="@baseUrl/images/employers/@user["Avatar"]" style="width: 50px" /></td>
                                         <td>@user["RoleNames"]</td>
                                         <td>
                                             <a class="btn btn-primary" asp-action="ManageUserRoles" asp-route-userId="@user["userId"]">Set Role</a>

@@ -2,9 +2,12 @@
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 
 @{
     var employer = await userManager.GetUserAsync(User);
+    var baseUrl = appSettings.Value.BaseUrl;
 }
 
 <!-- Navbar -->
@@ -28,7 +31,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="image" class="w-px-40 h-px-40 rounded-circle" />
+                        <img src="@baseUrl/images/employers/@employer.UrlAvatar" alt="image" class="w-px-40 h-px-40 rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -37,7 +40,7 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="image" class="w-px-40 h-px-40 rounded-circle" />
+                                        <img src="@baseUrl/images/employers/@employer.UrlAvatar" alt="image" class="w-px-40 h-px-40 rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">

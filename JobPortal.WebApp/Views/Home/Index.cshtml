@@ -3,9 +3,12 @@
 @{
     Layout = "_Layout";
 
-    //Jobs posted week ago
-    DateTime lastWeek = DateTime.Now.AddDays(-7); // get the time 7 days ago
-    byte jobCount = (byte)Model.Count(j => j.CreateDate >= lastWeek); // count the number of jobs in the period
+    // Jobs posted in the last week
+    DateTime lastWeek = DateTime.Now.AddDays(-7);
+    byte jobCount = (byte)Model.Count(j => j.CreateDate >= lastWeek);
+
+    // Get the base URL from configuration
+    var baseUrl = ViewBag.BaseUrl;
 }
 
 <!-- Start banner Area -->
@@ -17,36 +20,26 @@
                 <h1 class="text-white">
                     <span>@jobCount+</span> offres d'emploi publiées il y a une semaine
                 </h1>
-                <!--Search box-->
+                <!-- Search box -->
                 @Html.Partial("../Shared/_SearchBoxPartial.cshtml")
-                <p style="font-size: 20px" class="text-white"> <span>Recherche par tags :</span> Developer, Engineer, Technology, Support, Manager, Senior, Junior</p>
+                <p style="font-size: 20px" class="text-white">
+                    <span>Recherche par tags :</span> Developer, Engineer, Technology, Support, Manager, Senior, Junior
+                </p>
             </div>
         </div>
     </div>
 </section>
 <!-- End banner Area -->
-
-<!-- Category -->
-<!-- Start features Area -->
-@* <section class="features-area">
-    <div class="container">
-        <!-- Category view component-->
-        <vc:category></vc:category>
-    </div>
-</section> *@
-
 <!-- Job model -->
-<!-- Start popular-post Area -->
 <section class="popular-post-area pt-100">
-    <div class="container" >
+    <div class="container">
         <div class="row align-items-center">
             <div class="active-popular-post-carusel">
                 @foreach (var job in ViewBag.RandomJobs)
                 {
-                    <div class="single-popular-post d-flex flex-row"
-                    style="border-radius: 10px; color: white; background-color: #333; padding: 10px;">
+                    <div class="single-popular-post d-flex flex-row" style="border-radius: 10px; color: white; background-color: #333; padding: 10px;">
                         <div class="thumb">
-                            <img href="/job/@job.Slug" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image" style="border-radius:5px" width="70" height="70" >
+                            <img href="/job/@job.Slug" src="@baseUrl/images/employers/@job.AppUser.UrlAvatar" alt="job image" style="border-radius:5px" width="70" height="70">
                             <a class="btns text-uppercase" style="width:100px; text-align:center; border-radius:5px" href="/job/@job.Slug">View job</a>
                         </div>
                         <div class="details">
@@ -57,7 +50,6 @@
                             <p class="address"><span class="lnr lnr-book"></span> @job.Title.Name</p>
                             <p class="address">$ @job.MinSalary - @job.MaxSalary USD</p>
                             <ul class="tags" style="border-radius:10px">
-                                <!-- Skill -->
                                 <li style="border-radius:10px">
                                     <ul class="skill-list">
                                         <span class="lnr lnr-tag"></span>
@@ -83,7 +75,6 @@
 </section>
 
 <!-- Skill categories -->
-<!-- Start feature-cat Area -->
 <section class="feature-cat-area pt-100" id="category">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -93,14 +84,14 @@
                     <p>Meilleures compétences demandées.</p>
                 </div>
             </div>
-        </div><
+        </div>
         <div class="row">
             @foreach (var skill in ViewBag.RandomSkills)
             {
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-fcat">
                         <a href="/job?slug=@skill.Slug">
-                            <img height="80" width="80" src="https://localhost:7211/images/skills/@skill.Logo" alt="">
+                            <img height="80" width="80" src="@baseUrl/images/skills/@skill.Logo" alt="">
                         </a>
                         <hr />
                         <a href="/job?slug=@skill.Slug"><h5>@skill.Name</h5></a>
@@ -111,7 +102,7 @@
     </div>
 </section>
 
-<!-- Start Top Employer -->
+<!-- Top Employers -->
 <section class="feature-cat-area pt-100" id="category">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -125,96 +116,38 @@
         <div class="row">
             @foreach (var emp in ViewBag.RandomEmployers)
             {
-                if (@emp.Jobs.Count > 0)
+                if (emp.Jobs.Count > 0)
                 {
                     <div class='col-xs-16 col-3'>
-                            <div class="card" style="overflow: hidden;">
-                                <a href="/company/@emp.Slug"><img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='200' width='150'></a>
-                                <div class='card-body'>
+                        <div class="card" style="overflow: hidden;">
+                            <a href="/company/@emp.Slug"><img class="card-img card-img-top" src="@baseUrl/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='200' width='150'></a>
+                            <div class='card-body'>
                                 <a href="/company/@emp.Slug">
                                     <h5 class="text-center" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">@emp.FullName</h5>
                                 </a>
-                                    <hr />
-                                    <footer class='card-text text-center'>
+                                <hr />
+                                <footer class='card-text text-center'>
                                     <a href="/job?slug=@emp.Province.Slug"><span class="lnr lnr-map-marker"></span><span> @emp.Province.Name</span></a>
                                     <p></p>
                                     <a href="/job?slug=@emp.Slug"><span> <img src="~/assets/admin/assets/img/icons/unicons/job-icon.png" alt="User" style="object-fit:cover; width:20px; height:20px " class="rounded" /> @emp.Jobs.Count Jobs <span class="lnr lnr-chevron-right"></span></span></a>
-                                    </footer>
-                                </div>
+                                </footer>
                             </div>
+                        </div>
                     </div>
                 }
             }
         </div>
     </div>
 </section>
-<br /><br /><br />
-@* <!-- Start callto-action Area -->
-<section class="callto-action-area section-gap" id="join">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="menu-content col-lg-9">
-                <div class="title text-center">
-                    <h1 class="mb-10 text-white">Rejoignez-nous aujourd'hui sans aucune hésitation</h1>
-                    <a class="primary-btn" href="#">I am a Candidate</a>
-                    <a class="primary-btn" href="#">Request Free Demo</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End calto-action Area -->
- *@
-@* <!-- Start download Area -->
-<section class="download-area section-gap" id="app">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 download-left">
-                <img src="../assets/user/img/d1.png" alt="">
-            </div>
-            <div class="col-lg-6 download-right">
-                <h1>
-                    Download the <br>
-                    Job Listing App Today!
-                </h1>
-                <p class="subs">
-                    It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned.
-                </p>
-                <div class="d-flex flex-row">
-                    <div class="buttons">
-                        <i class="fa fa-apple" aria-hidden="true"></i>
-                        <div class="desc">
-                            <a href="#">
-                                <p>
-                                    <span>Available</span> <br>
-                                    on App Store
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <i class="fa fa-android" aria-hidden="true"></i>
-                        <div class="desc">
-                            <a href="#">
-                                <p>
-                                    <span>Available</span> <br>
-                                    on Play Store
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End download Area -->
- *@
+<br />
+<br />
+<br />
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 
     <script>
-        // Lưu giá trị thuộc tính được chọn khi nhấn nút Search
+        // Save selected values for search
         function saveSelectedValue() {
             var provinceSelect = document.getElementsByName("province")[0];
             var skillSelect = document.getElementsByName("skill")[0];
@@ -223,7 +156,7 @@
             sessionStorage.setItem("selectedSkill", skillSelect.value);
         }
 
-        // Khôi phục giá trị thuộc tính được chọn khi trang được tải lại
+        // Restore selected values on page load
         function restoreSelectedValue() {
             var provinceSelect = document.getElementsByName("province")[0];
             var skillSelect = document.getElementsByName("skill")[0];
@@ -240,7 +173,7 @@
             }
         }
 
-        // Gọi hàm khôi phục giá trị thuộc tính khi trang được tải lại
+        // Restore values when the page loads
         window.onload = function () {
             restoreSelectedValue();
         };

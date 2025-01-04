@@ -1,8 +1,10 @@
 ﻿using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
+using JobPortal.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
@@ -13,18 +15,24 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     {
         private readonly RoleManager<AppRole> roleManager;
         private readonly UserManager<AppUser> userManager;
+		private readonly AppSettings _appSettings;
 
-        public AppUserController(RoleManager<AppRole> roleManager, UserManager<AppUser> userManager)
+
+        public AppUserController(RoleManager<AppRole> roleManager,
+			IOptions<AppSettings> appSettings ,
+			UserManager<AppUser> userManager)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
+            this._appSettings = appSettings.Value;
         }
 
         [Route("")]
         public IActionResult Index()
-        {
-            //All users but admin
-            var users = userManager.Users.Where(u => u.Status != -1).ToList();
+		{
+			//All users but admin
+			ViewBag.BaseUrl = _appSettings.BaseUrl;
+			var users = userManager.Users.Where(u => u.Status != -1).ToList();
             var userRoles = new List<Dictionary<string, string>>();
 
             foreach (var user in users)

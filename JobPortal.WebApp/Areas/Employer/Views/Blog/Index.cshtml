@@ -6,10 +6,12 @@
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
-
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 @{
     var user = await userManager.GetUserAsync(User);
     ViewData["Title"] = "Blog";
+    var baseUrl = appSettings.Value.BaseUrl;
 }
 
 <div class="content-wrapper">
@@ -67,7 +69,7 @@
                                             <td>@Html.DisplayFor(modelBlog => blog.Author)</td>
                                             <td>@Html.DisplayFor(modelBlog => blog.CreateDate)</td>
                                             <td>@Html.DisplayFor(modelBlog => blog.Title)</td>
-                                            <td><img src="https://localhost:7211/images/blogs/@blog.Image" style="width: 200px" /></td>
+                                            <td><img src="@baseUrl/images/blogs/@blog.Image" style="width: 200px" /></td>
                                             <td>
                                                 <a style="color: blue" href="/employer/blog/update/@blog.Id">Update</a> |
                                                 <a style="color: red" href="#" onclick="onDelete(@blog.Id)">Delete</a>

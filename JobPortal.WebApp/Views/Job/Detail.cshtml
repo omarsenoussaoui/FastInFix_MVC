@@ -3,8 +3,10 @@
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
-
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 @{
+	var baseUrl = appSettings.Value.BaseUrl;
     var user = await userManager.GetUserAsync(User);
     Layout = "_Layout";
 }
@@ -31,7 +33,7 @@
 			<div class="col-lg-8 post-list">
 				<div class="single-post d-flex flex-row">
 					<div class="thumb" style="align-items:center">
-						<a href="/job?slug=@Model.AppUser.Slug"><img style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE"></a>
+						<a href="/job?slug=@Model.AppUser.Slug"><img style="border-radius:10px" width="200" height="100" src="@baseUrl/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE"></a>
 						<ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
 							<!-- Province -->
 							<li style="border-radius:10px">

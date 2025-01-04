@@ -2,8 +2,10 @@
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
-
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 @{
+	var baseUrl = appSettings.Value.BaseUrl;
     var account = await userManager.GetUserAsync(User);
 	var isSignedIn = signInManager.IsSignedIn(User);
 }
@@ -27,7 +29,7 @@
 	<title>Fast In Fix</title>
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 	<!-- Favicon -->
-	<link rel="icon" type="image/x-icon" href="~/assets/user/img/Logo.ico" />
+	<link rel="icon" type="image/x-icon" href="~/assets/user/img/icon@4x.png" />
 	<!--CSS-->
 	<link rel="stylesheet" href="~/assets/user/css/linearicons.css">
 	<link rel="stylesheet" href="~/assets/user/css/font-awesome.min.css">
@@ -56,7 +58,8 @@
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
 					<a href="/">
-						<h1 style="font-size: 40px; font-weight: bold; color: #fff; margin: 0; font-family: 'Poppins', sans-serif;">FastInFix</h1>
+						<!-- Add an ID to the logo image -->
+						<img id="header-logo" src="~/assets/user/img/logo.png" alt="FastInFix Logo" style="height: 40px; width: auto;">
 					</a>
 				</div>
 				<!-- Start nav-menu-container -->
@@ -176,7 +179,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<img style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto 20px;" src="https://localhost:7211/images/default/ads.jpg" alt="image publicité">
+										<img style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto 20px;" src="@baseUrl/images/default/ads.jpg" alt="image publicité">
 										<p>En vous inscrivant en tant qu'employeur, vous bénéficiez de nombreux avantages :</p>
 										<ul class="unordered-list">
 											<li>Possibilité de publier des offres d'emploi et d'atteindre un public plus large</li>

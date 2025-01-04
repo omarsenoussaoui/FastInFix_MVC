@@ -2,6 +2,13 @@
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Web.Common;
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
+
+@{
+    var baseUrl = appSettings.Value.BaseUrl;
+}
+
 
 <div class="content-wrapper">
     <div class="row">
@@ -56,7 +63,7 @@
                                                 @Html.DisplayFor(modelItem => skill.Name)
                                             </td>
                                             <td>
-                                                <img src="https://localhost:7211/images/skills/@skill.Logo" style="width: 50px" />
+                                                <img src="@baseUrl/images/skills/@skill.Logo" style="width: 50px" />
                                             </td>
                                             <td>
                                                 <div class="dropdown">

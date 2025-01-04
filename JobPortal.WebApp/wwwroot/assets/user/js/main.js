@@ -157,8 +157,10 @@ $(document).ready(function () {
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('#header').addClass('header-scrolled');
+            $('#header-logo').attr('src', '/assets/user/img/logo2.png');
         } else {
             $('#header').removeClass('header-scrolled');
+            $('#header-logo').attr('src', '/assets/user/img/logo.png');
         }
     })
 

@@ -3,10 +3,12 @@
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
-
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 @{
     var user = await userManager.GetUserAsync(User);
     ViewData["Title"] = "Update blog";
+    var baseUrl = appSettings.Value.BaseUrl;
 }
 
 <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
@@ -78,7 +80,7 @@
                                     </div>
                                     <br />
                                     <div class="form-group" style="text-align: center">
-                                        <img id="blah" src="https://localhost:7211/images/blogs/@Model.Image" alt="your image" style="width: 390px;" />
+                                        <img id="blah" src="@baseUrl/images/blogs/@Model.Image" alt="your image" style="width: 390px;" />
                                         <a style="margin-top: 10px" class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal">Change image</a>
                                     </div>
                                     <br />

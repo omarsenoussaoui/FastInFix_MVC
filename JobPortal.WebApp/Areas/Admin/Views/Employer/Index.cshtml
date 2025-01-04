@@ -3,6 +3,9 @@
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Web.Common;
 
+@{
+    var baseUrl = ViewBag.BaseUrl;
+}
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
@@ -103,7 +106,7 @@
                                     </tr>
                                     <tr class="targetfields">
                                         <td>
-                                            <img src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="@emp.FullName" style="width: 100px;">
+                                            <img src="@baseUrl/images/employers/@emp.UrlAvatar" alt="@emp.FullName" style="width: 100px;">
                                         </td>
                                         <td>@Html.Raw(emp.Description)</td>
                                         <td>@Html.Raw(emp.Contact)</td>

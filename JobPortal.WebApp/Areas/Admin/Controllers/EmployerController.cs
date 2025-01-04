@@ -5,6 +5,8 @@ using JobPortal.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using JobPortal.Data.ViewModel;
 using X.PagedList;
+using JobPortal.WebApp.Models;
+using Microsoft.Extensions.Options;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
@@ -14,18 +16,21 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     {
         private readonly DataDbContext _context;
         private readonly UserManager<AppUser> _userManager;
+		private readonly AppSettings _appSettings;
 
-        public EmployerController(DataDbContext context, UserManager<AppUser> userManager)
+        public EmployerController(DataDbContext context, IOptions<AppSettings> appSettings, UserManager<AppUser> userManager)
         {
             _context = context;
             _userManager = userManager;
-        }
+			this._appSettings = appSettings.Value;
+		}
 
         [Route("index/{status}")]
         [Route("{status}")]
         public async Task<IActionResult> Index(int status, int? page)
         {
-            int pageSize = 5; //number of users per page
+			ViewBag.BaseUrl = _appSettings.BaseUrl;
+			int pageSize = 5; //number of users per page
 
             var employer = (from emp in _context.AppUsers
                         orderby emp.CreateDate descending

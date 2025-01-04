@@ -3,9 +3,11 @@
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
-
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 @{
     var user = await userManager.GetUserAsync(User);
+    var baseUrl = appSettings.Value.BaseUrl;
 }
 
 <!-- Css Styles -->
@@ -338,7 +340,7 @@
                                         <tbody id="items">
                                             <tr class="targetfields">
                                                 <td>
-                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px">
+                                                    <img src="@baseUrl/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px">
                                                 </td>
                                                 <td>
                                                     <span>@CV.JobName</span>
@@ -369,7 +371,7 @@
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <img src="https://localhost:7211/images/cvs/@CV.CVImage" alt="@CV.UserName" style="width: 800px; height: 1000px">
+                                                                                <img src="@baseUrl/images/cvs/@CV.CVImage" alt="@CV.UserName" style="width: 800px; height: 1000px">
                                                                             </div>
                                                                         </div>
                                                                     </div>

@@ -1,7 +1,9 @@
 ﻿@model JobPortal.Data.Entities.Blog
-
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 @{
     Layout = "_Layout";
+    var baseUrl = appSettings.Value.BaseUrl;
 }
 
 <!-- Start banner Area -->
@@ -25,11 +27,11 @@
         <div class="row">
             <div class="col-lg-8 post-list blog-post-list">
                 <div class="single-post">
-                    <img class="img-fluid" src="https://localhost:7211/images/blogs/@Model.Image" alt="blog image">
+                    <img class="img-fluid" src="@baseUrl/images/blogs/@Model.Image" alt="blog image">
                     <ul class="tags">
                         <li>
                             <a href="#">
-									<img style="width: 80px" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar"
+                                <img style="width: 80px" src="@baseUrl/images/employers/@Model.AppUser.UrlAvatar"
                                      alt="blog image"> Rédacteur de contenu : @Model.Author • @Model.CreateDate.ToString("dddd, yy/MM/yyyy - HH:mm:ss - tt")
                             </a>
                         </li>

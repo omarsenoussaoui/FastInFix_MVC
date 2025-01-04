@@ -1,4 +1,9 @@
-﻿<head>
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
+@{
+	var baseUrl = appSettings.Value.BaseUrl;
+}
+<head>
     <style>
         .single-blog {
             position: relative;
@@ -110,7 +115,7 @@
         <div class="blog-list">
             @foreach (var blog in ViewBag.ListBlogs)
             {
-                <div class="single-blog" style="background:#000 url(https://localhost:7211/images/blogs/@blog.Image);">
+                <div class="single-blog" style="background:#000 url(@baseUrl/images/blogs/@blog.Image);">
                     <div class="over"></div>
                     <a href="/blog/@blog.Slug"><h4>@blog.Title</h4></a>
                     <div class="meta justify-content-between d-flex">

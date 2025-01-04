@@ -6,9 +6,11 @@
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
-
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 @{
     var user = await userManager.GetUserAsync(User);
+    var baseUrl = appSettings.Value.BaseUrl;
 }
 
 <style>
@@ -55,7 +57,7 @@
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <img src="https://localhost:7211/images/employers/@user.UrlAvatar"
+                        <img src="@baseUrl/images/employers/@user.UrlAvatar"
                              height="140"
                              style="margin-bottom: 10px"
                              alt="EMPLOYER IMAGE"

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using Microsoft.Extensions.Options;
+using JobPortal.WebApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,8 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
 
 builder.Services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
 builder.Services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("Urls"));
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 //Session
 builder.Services.AddDistributedMemoryCache();

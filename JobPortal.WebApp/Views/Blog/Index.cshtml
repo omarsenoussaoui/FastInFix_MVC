@@ -2,10 +2,12 @@
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Web.Common;
-
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
 @{
+	var baseUrl = appSettings.Value.BaseUrl;
     Layout = "_Layout";
-	int startRank = ViewBag.StartRank ?? 1; // Lấy giá trị startRank từ ViewBag, mặc định là 1 nếu không tồn tại
+	int startRank = ViewBag.StartRank ?? 1; 
 }
 
 <style>
@@ -60,11 +62,11 @@
 				{
 					<br />
 					<div class="single-post">
-						<a href="/blog/@blog.Slug"><img class="img-fluid" src="https://localhost:7211/images/blogs/@blog.Image" alt="blog image"></a>
+						<a href="/blog/@blog.Slug"><img class="img-fluid" src="@baseUrl/images/blogs/@blog.Image" alt="blog image"></a>
 						<ul class="tags">
 							<li>
 								<a href="#">
-									<img style="width: 80px" src="https://localhost:7211/images/employers/@blog.AppUser.UrlAvatar"
+									<img style="width: 80px" src="@baseUrl/images/employers/@blog.AppUser.UrlAvatar"
 										 alt="blog image"> Rédacteur de contenu : @blog.Author • @blog.CreateDate.ToString("dddd, yy/MM/yyyy - HH:mm:ss - tt")
 								</a>
 								

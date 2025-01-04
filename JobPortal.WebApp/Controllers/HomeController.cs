@@ -3,21 +3,25 @@ using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
 using JobPortal.WebApp.Models;
 using System.Diagnostics;
+using Microsoft.Extensions.Options;
 
 namespace JobPortal.WebApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly DataDbContext _context;
+		private readonly AppSettings _appSettings;
 
-        public HomeController(DataDbContext dataDbContext)
+        public HomeController(DataDbContext dataDbContext, IOptions<AppSettings> appSettings)
         {
             this._context = dataDbContext;
-        }
+			_appSettings = appSettings.Value;
+		}
 
         public IActionResult Index()
         {
-            var random = new Random();
+			ViewBag.BaseUrl = _appSettings.BaseUrl;
+			var random = new Random();
 
             //for model
             var jobs = _context.Jobs.ToList();
