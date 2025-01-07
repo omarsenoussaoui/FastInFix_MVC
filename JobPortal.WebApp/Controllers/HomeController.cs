@@ -11,20 +11,23 @@ namespace JobPortal.WebApp.Controllers
     {
         private readonly DataDbContext _context;
 		private readonly AppSettings _appSettings;
+		private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(DataDbContext dataDbContext, IOptions<AppSettings> appSettings)
+		public HomeController(DataDbContext dataDbContext, IOptions<AppSettings> appSettings, IHttpContextAccessor httpContextAccessor)
         {
             this._context = dataDbContext;
 			_appSettings = appSettings.Value;
+            _httpContextAccessor = httpContextAccessor;
 		}
 
         public IActionResult Index()
         {
 			ViewBag.BaseUrl = _appSettings.BaseUrl;
 			var random = new Random();
-
-            //for model
-            var jobs = _context.Jobs.ToList();
+			var request = _httpContextAccessor.HttpContext.Request;
+			var baseUrl = $"{request.Scheme}://{request.Host}";
+			//for model
+			var jobs = _context.Jobs.ToList();
 
             //For search filter area
             ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
