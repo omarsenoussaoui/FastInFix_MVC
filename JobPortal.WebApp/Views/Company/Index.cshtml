@@ -2,10 +2,16 @@
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Web.Common;
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSettings
+
 
 @{
     Layout = "_Layout";
-    int startRank = ViewBag.StartRank ?? 1; // Lấy giá trị startRank từ ViewBag, mặc định là 1 nếu không tồn tại
+    int startRank = ViewBag.StartRank ?? 1;
+    var baseUrl = appSettings.Value.BaseUrl;
 }
 
 <style>
